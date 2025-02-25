@@ -1,0 +1,28 @@
+{
+  "name": "BLN-HCM-API",
+  "type": "app",
+  "defaultPage": "home",
+  "config": {
+    "config": {
+      "parameters": [
+        "$httpProvider"
+      ],
+      "script": "       $httpProvider.interceptors.push(($cookies) => {\n          return {\n            request: config => {\n              config.headers = config.headers || {};\n              config.headers['X-Authorization'] = `Bearer ${$cookies.get('id_token')}`;\n              return config;\n            }\n          };\n        });"
+    },
+    "modules": [],
+    "properties": {
+      "version": "1.0.0-SNAPSHOT"
+    },
+    "environments": [],
+    "themes": [],
+    "auth": {
+      "enabled": false,
+      "mockedUserAccounts": []
+    }
+  },
+  "directories": null,
+  "externalScripts": [],
+  "externalStylesheets": [],
+  "localScripts": [],
+  "localStylesheets": []
+}
